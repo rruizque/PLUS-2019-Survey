@@ -1,0 +1,17 @@
+{
+  "current git repository": "",
+  "git repositories": [
+    ""
+  ],
+  "app start": "survey.js",
+  "routes": {
+    "survey.js": {
+      "method": "all",
+      "route": ""
+    },
+    "admin/feedback.js": {
+      "method": "get",
+      "route": "admin/feedback"
+    }
+  }
+}

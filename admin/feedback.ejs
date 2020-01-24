@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title> Survey Feedback</title>
+    <style>
+      #container {
+          padding-left: 2%;
+          font-family: Arial, Helvetica;
+          text-align: left;
+        }
+
+      .question   {
+          font-size: 1.5em;
+          color: #2C3E50;
+          padding-bottom: 1.5%;
+        }
+
+
+      .user  {
+        font-size: 1.1em;
+        font-weight: bold;
+        color: #2980B9;
+        width: 20%;
+      }
+
+      .answer {
+        padding: 1%;
+      }
+
+      .choice {
+        font-size: 1.1em;
+        font-weight: 500;
+        text-align: left;
+      }
+
+      .free-form {
+        padding: 1%;
+      }
+
+      
+    </style>
+  </head>
+
+  <body>
+    <div id = "container">
+    <% questions.forEach(question => { %>
+      <table>
+        <tr>
+          <th class = "question" colspan = "2"> <%= question.question %> </th>
+        </tr>
+
+      <div class = "answer">
+      <% question.answer.forEach(response => { %>
+        <tr>
+          <th class = "user"> <%= response.user %> </th>
+          <td class = "choice"> <%= response.choice_response %> </td>
+        </tr>
+        
+        <tr>
+          <td colspan = "2" class = "free-form"> <%= response.free_form_response %> </td> 
+        </tr>   
+      <% }); %>
+      </div>
+      </table>
+    <% }); %>
+    </div>
+  </body>
+</html>

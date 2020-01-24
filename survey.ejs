@@ -1,0 +1,88 @@
+
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>Survey</title>
+    <link rel="stylesheet" type="text/css" href="public/style.css">
+  </head>
+
+  <body>
+
+    <div id = "header">
+      <p class = "survey-header"> <%= survey.name %> </p>
+      <span id = "user">
+        <h3> <span class = "user-name" >User: <%= user %></span> <img src="/avatar/user/<%= user %>.jpg" class="avatar"> </h3>
+      </span>
+    </div>
+
+    <form method="post">
+
+    <div id = "container">
+
+      <% questions.forEach(question => { %>
+
+        <% if (question.type === "radio buttons") { %>
+
+        <div class = "question">
+          <h4><%= question.question %></h4>          
+          <div class = "choices">
+            <% if (question.choice1) { %> <input type="radio" name="question<%= question.question_id %>" value="choice1" id="question<%= question.question_id %>_choice1"> <label for="question<%= question.question_id %>_choice1"> <%= question.choice1 %> </label> <br> <% } %>
+            <% if (question.choice2) { %> <input type="radio" name="question<%= question.question_id %>" value="choice2" id="question<%= question.question_id %>_choice2"> <label for="question<%= question.question_id %>_choice2"> <%= question.choice2 %> </label> <br> <% } %>
+            <% if (question.choice3) { %> <input type="radio" name="question<%= question.question_id %>" value="choice3" id="question<%= question.question_id %>_choice3"> <label for="question<%= question.question_id %>_choice3"> <%= question.choice3 %> </label> <br> <% } %>
+            <% if (question.choice4) { %> <input type="radio" name="question<%= question.question_id %>" value="choice4" id="question<%= question.question_id %>_choice4"> <label for="question<%= question.question_id %>_choice4"> <%= question.choice4 %> </label> <br> <% } %>
+            <% if (question.choice5) { %> <input type="radio" name="question<%= question.question_id %>" value="choice5" id="question<%= question.question_id %>_choice5"> <label for="question<%= question.question_id %>_choice5"> <%= question.choice5 %> </label> <br> <% } %>
+            <% if (question.free_form_question) { %>
+              <h5> <%= question.free_form_question %> </h5>
+              <textarea name="free_form_question<%= question.question_id %>" maxlength = "3000" rows="8" cols="60"></textarea>
+            <% } %>
+          </div>
+        </div>
+
+        <% } %>
+
+
+        <% if (question.type === "checkboxes") { %>
+
+        <div class = "question">
+          <h4><%= question.question %></h4>          
+          <div class = "choices">
+            <% if (question.choice1) { %> <input type="checkbox" name="question<%= question.question_id %>_choice1" id="question<%= question.question_id %>_choice1"> <label for="question<%= question.question_id %>_choice1"> <%= question.choice1 %> </label> <br> <% } %>
+            <% if (question.choice2) { %> <input type="checkbox" name="question<%= question.question_id %>_choice2" id="question<%= question.question_id %>_choice2"> <label for="question<%= question.question_id %>_choice2"> <%= question.choice2 %> </label> <br> <% } %>
+            <% if (question.choice3) { %> <input type="checkbox" name="question<%= question.question_id %>_choice3" id="question<%= question.question_id %>_choice3"> <label for="question<%= question.question_id %>_choice3"> <%= question.choice3 %> </label> <br> <% } %>
+            <% if (question.choice4) { %> <input type="checkbox" name="question<%= question.question_id %>_choice4" id="question<%= question.question_id %>_choice4"> <label for="question<%= question.question_id %>_choice4"> <%= question.choice4 %> </label> <br> <% } %>
+            <% if (question.choice5) { %> <input type="checkbox" name="question<%= question.question_id %>_choice5" id="question<%= question.question_id %>_choice5"> <label for="question<%= question.question_id %>_choice5"> <%= question.choice5 %> </label> <br> <% } %>
+            <% if (question.free_form_question) { %>
+              <h5> <%= question.free_form_question %> </h5>
+              <textarea name="free_form_question<%= question.question_id %>"  maxlength = "3000" rows="8" cols="60"></textarea>
+            <% } %>
+          </div>
+        </div>
+
+        <% } %>
+
+
+        <% if (question.type === "textarea") { %>
+
+          <div class = "question">
+            <h4><%= question.question %></h4>
+            <textarea name="free_form_question<%= question.question_id %>" maxlength = "4500" class = "large-text" rows="12" cols="80"></textarea>
+          </div>
+
+        <% } %>
+
+
+      <% }) %>
+
+
+      <div id = "submit">
+        <button class="submit-button" type="submit">Submit</button>
+      </div>
+
+      </form>
+
+    </div>
+  </body>
+
+</html>
